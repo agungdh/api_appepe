@@ -47,11 +47,12 @@
 </html>
 
 <?php
-if ($this->input->get('error') == '1') {
+$flashdata = $this->session->flashdata('pesan');
+if ($flashdata != null) {
   ?>
-    <script type="text/javascript">
-      alert("Password salah");
-    </script>
+  <script type="text/javascript">
+    alert("<?php echo $flashdata; ?>");
+  </script>
   <?php
 }
 ?>

@@ -9,7 +9,7 @@ class Pelanggaran extends CI_Controller {
 	function index() {
 		$data['isi'] = "pelanggaran/index";
 		$where['mahasiswa_id'] = $this->session->orang->id;
-		$data['data']['pelanggaran'] = $this->m_universal->get_where('pelanggaran', $where);
+		$data['data']['pelanggaran'] = $this->db->get_where('pelanggaran', $where)->result();
 		
 		$this->load->view("template/template", $data);
 	}

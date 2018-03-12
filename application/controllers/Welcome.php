@@ -16,11 +16,11 @@ class Welcome extends CI_Controller {
 	function aksi_login() {
 		$data_user = $this->m_welcome->cek_login($this->input->post('username'), hash('sha512', $this->input->post('password')));
 		if ($data_user != null) {
-			
+			$where['id'] = $data_user->_id;
 			if ($data_user->level == 1) {
-				$orang = $this->m_universal->get_id('administrator', $data_user->_id);
+				$orang = $this->db->get_where('administrator', $where)->row();
 			} else {
-				$orang = $this->m_universal->get_id('mahasiswa', $data_user->_id);
+				$orang = $this->db->get_where('mahasiswa', $where)->row();
 			}
 
 			$array_data_user = array(
@@ -32,16 +32,12 @@ class Welcome extends CI_Controller {
 				'login'  => true
 			);
 
-			if ($data_user->id_unit != null) {
-				$array_data_user['id_unit'] = $data_user->id_unit;
-				$array_data_user['unit'] = $this->m_welcome->ambil_unit_id($data_user->id_unit)->unit;			
-			}
-
 			$this->session->set_userdata($array_data_user);
 
 			redirect(base_url());
 		} else {
-			redirect(base_url('?error=1'));
+			$this->session->set_flashdata('pesan', 'Password Salah !!!');
+			redirect(base_url());
 		}
 	}
 
