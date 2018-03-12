@@ -21,19 +21,6 @@ if ($flashdata != null) {
           <input required type="date" value="<?php echo date('Y-m-d'); ?>" class="form-control" id="tanggal" placeholder="Isi Tanggal" name="tanggal">          
     </div>
 
-   <div class="form-group">
-      <label for="jenis">Jenis Pelanggaran</label>
-          <select id="jenis" class="form-control select2" name="jenis">
-            <?php
-            foreach ($data['jenis'] as $item) {
-              ?>
-              <option value="<?php echo $item->id; ?>"><?php echo $item->jenis; ?></option>
-              <?php
-            }
-            ?>
-          </select>          
-    </div>
-
     <div class="form-group">
       <label for="keterangan">Keterangan</label>
           <textarea required name="keterangan" id="keterangan" class="form-control" rows="3" placeholder="Isi Keterangan"></textarea>
