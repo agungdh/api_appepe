@@ -12,6 +12,10 @@ class M_universal extends CI_Model{
 		return $this->db->get_where($tabel, array('id' => $id))->row();
 	}
 
+	function get_where($tabel, $where) {
+		return $this->db->get_where($tabel, $where)->result();
+	}
+
 	function insert($tabel, $data) {
 		$this->db->insert($tabel, $data);
 		return $this->db->insert_id();
