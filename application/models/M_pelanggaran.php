@@ -5,7 +5,7 @@ class M_pelanggaran extends CI_Model{
 	}
 
 	function ambil_mahasiswa($mahasiswa_id){
-		$sql = "SELECT pg.mahasiswa_id, jn.jenis, pl.tanggal, concat(day(pl.tanggal), '-', month(pl.tanggal), '-', year(pl.tanggal)) tanggal_indo
+		$sql = "SELECT pg.mahasiswa_id, jn.jenis, pl.tanggal, concat(lpad(day(pl.tanggal), 2, '0'), '-', lpad(month(pl.tanggal), 2, '0'), '-', year(pl.tanggal)) tanggal_indo
 				FROM pelaporan pl, pelanggaran pg, jenis jn, mahasiswa mh
 				WHERE pg.pelaporan_id = pl.id
 				AND pg.jenis_id = jn.id
