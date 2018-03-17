@@ -100,15 +100,15 @@ $status = $data['laporan']->status == 1 ? "AKTIF" : "NONAKTIF";
           <tr>
             <td><?php echo $this->db->get_where('mahasiswa', array('id' => $item->mahasiswa_id))->row()->nama; ?></td>
             <td><?php echo $this->db->get_where('jenis', array('id' => $item->jenis_id))->row()->jenis; ?></td>
-            <td>
               <?php
               if ($data['laporan']->status == 1) {
                 ?>
-                <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')"><i class="fa fa-trash"></i> </a>
+                <td>
+                  <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')"><i class="fa fa-trash"></i> </a>
+                </td>
                 <?php
               }
               ?>
-            </td>
           </tr>
           <?php
         }
