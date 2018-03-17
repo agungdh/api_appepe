@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Laporan extends CI_Controller {
 	function __construct(){
 		parent::__construct();
+		$this->load->model('m_laporan');
 	}
 
 	function index() {
@@ -18,7 +19,7 @@ class Laporan extends CI_Controller {
 		$data['isi'] = "laporan/detail";
 		$data['data']['laporan'] = $this->db->get_where('pelaporan', array('id' => $id))->row();
 		$data['data']['pelanggaran'] = $this->db->get_where('pelanggaran', array('pelaporan_id' => $id))->result();
-		$data['data']['mahasiswa'] = $this->db->get('mahasiswa')->result();
+		$data['data']['mahasiswa'] = $this->m_laporan->ambil_mahasiswa($id);
 		$data['data']['jenis'] = $this->db->get('jenis')->result();
 		
 		$this->load->view("template/template", $data);
