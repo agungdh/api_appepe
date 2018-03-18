@@ -27,6 +27,7 @@ class Data_pelanggaran extends REST_Controller {
     }
 
     function index_post() {
+        $this->data['status'] = "1";
         $this->data['pelanggaran'] = $this->m_pelanggaran->ambil_mahasiswa($this->data['login']->_id);
         $this->data['jumlah_pelanggaran'] = count($this->data['pelanggaran']);
 
